@@ -10,8 +10,8 @@ public class NobilityPrincipleComparator implements Comparator<Person> {
 
     @Override
     public int compare(Person o1, Person o2) {
-        String[] surName1 = o1.getSurname().split(" ");
-        String[] surName2 = o2.getSurname().split(" ");
+        String[] surName1 = o1.getSurname().split(" |-");
+        String[] surName2 = o2.getSurname().split(" |-");
         if (maxValue > surName1.length & maxValue > surName2.length) {
             if (surName1.length < surName2.length) {
                 return -1;
