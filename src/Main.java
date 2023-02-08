@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Main {
 
     public static void main(String[] args) {
         List<Person> people = new ArrayList<>();
-        people.add(new Person("Сергей", "Иванов", 20));
+        people.add(new Person("Сергей", "Иванов", 17));
         people.add(new Person("Руслан", "Петров Сидоров", 23));
         people.add(new Person("Василий", "Аксенов Васечкин", 25));
         people.add(new Person("Игорь", "Деточкин Самойлов Римский", 12));
@@ -16,5 +17,16 @@ public class Main {
 
         Collections.sort(people, new NobilityPrincipleComparator(3));
         System.out.println(people);
+
+        Predicate<Person> predicate = (person) -> {
+            if (person.getAge() < 18) {
+                return true;
+            }
+            return false;
+        };
+
+        people.removeIf(predicate);
+        System.out.println(people);
+
     }
 }
